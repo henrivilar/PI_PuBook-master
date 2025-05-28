@@ -1,8 +1,9 @@
 import { AppSidebar } from "@/components/app-sidebar";
-import { Input } from "@/components/ui/input";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import Livros from "@/components/Livros";
+import Favoritos from "@/components/Favoritos";
 
-export default function Dashboard({ children }: { children: React.ReactNode }) {
+export default function Dashboard() {
   return (
     <div className="bg-[--gray-bg] h-screen w-screen flex">
       {/* Sidebar */}
@@ -11,27 +12,27 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
           <AppSidebar />
           <main>
             <SidebarTrigger />
-            {children}
           </main>
         </SidebarProvider>
       </section>
+
       {/* Main */}
-      <section id="Main" className="flex flex-col mx-auto">
+      <section id="Main" className="flex flex-col mx-auto px-8 py-10 overflow-y-auto w-full">
         {/* Header */}
-        <div id="Header" className=" mt-10">
-          <form action="" method="post" className="">
-            <div className="flex gap-4 w-[600px] bg-[#F6F6F6] p-4 rounded-xl">
-              <img src="/imgs/Search.svg" alt="" />
-              <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquise por livros, autor, genêro..." className="w-full bg-[#F6F6F6] border-none outline-none "/>
-            </div>
-          </form>
+        <div id="Header" className="mb-6">
+          
         </div>
-        {/* Hero */}
-        <div id="ContinuarLendo" className="self-start">
-          <h2 className="text-xl font-semibold">Continuar lendo</h2>
+        
+        {/* Descoberta */}
+        <div id="DescubraLivros" className="mb-10">
+          <h2 className="text-xl font-semibold mb-4">Descubra novos livros</h2>
+          <Livros />
         </div>
-        <div id="ContinuarLendo" className="self-start">
-          <h2 className="text-xl font-semibold">Descubra novos livros</h2>
+
+        {/* Continuar lendo */}
+        <div id="ContinuarLendo" className="mb-10">
+          <h2 className="text-xl font-semibold mb-2">Continuar lendo</h2>
+          <Favoritos />
         </div>
       </section>
     </div>

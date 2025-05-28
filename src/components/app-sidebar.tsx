@@ -4,6 +4,10 @@ import {
   AudioWaveform,
   BookOpen,
   Bot,
+  House,
+  LayoutList,
+  Star,
+  History,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -34,25 +38,25 @@ const data = {
   },
   navMain: [
     {
-      title: "Henrique",
-      url: "/login",
-      icon: SquareTerminal,
+      title: "Inicio",
+      url: "/dashboard",
+      icon: House,
       isActive: true,
     },
     {
-      title: "Models",
+      title: "Categorias",
       url: "#",
-      icon: Bot,
+      icon: LayoutList,
     },
     {
-      title: "Documentation",
+      title: "Favoritos",
       url: "#",
-      icon: BookOpen,
+      icon: Star,
     },
     {
-      title: "Settings",
+      title: "Histórico",
       url: "#",
-      icon: Settings2,
+      icon: History,
     },
   ],
 }
@@ -62,7 +66,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="bg-[--blue-bg] text-white">
         <img src="/imgs/Logo.png" alt="" className="w-40 mx-auto mt-4"/>
-        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent className="bg-[--blue-bg] text-white">
         <NavMain items={data.navMain} />
