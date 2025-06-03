@@ -2,15 +2,15 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
+  Heart,
+  LayoutList,
   Command,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
+  Clock,
+  House,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -24,6 +24,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import router from "next/router"
 
 // This is sample data.
 const data = {
@@ -34,25 +35,25 @@ const data = {
   },
   navMain: [
     {
-      title: "Henrique",
-      url: "/login",
-      icon: SquareTerminal,
+      title: "Inicio",
+      url: "#",
+      icon: House,
       isActive: true,
     },
     {
-      title: "Models",
+      title: "Categorias",
       url: "#",
-      icon: Bot,
+      icon: LayoutList,
     },
     {
-      title: "Documentation",
+      title: "Favoritos",
       url: "#",
-      icon: BookOpen,
+      icon: Heart,
     },
     {
-      title: "Settings",
+      title: "Histórico",
       url: "#",
-      icon: Settings2,
+      icon: Clock,
     },
   ],
 }
@@ -62,13 +63,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="bg-[--blue-bg] text-white">
         <img src="/imgs/Logo.png" alt="" className="w-40 mx-auto mt-4"/>
-        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent className="bg-[--blue-bg] text-white">
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user}/>
+        <NavUser user={data.user} fazerLogout={() => {localStorage.removeItem('usuarioLogado')
+        router.push('/login')}} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

@@ -59,7 +59,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="bg-[--gray-bg] h-screen w-screen flex">
+    <div className="bg-[--gray-bg] h-full w-full flex">
       <section id="Sidebar">
         <SidebarProvider>
           <AppSidebar />
@@ -71,14 +71,14 @@ export default function Dashboard() {
 
       <section id="Main" className="flex flex-col mx-auto w-full px-6">
         {/* ✅ Botão de logout no topo */}
-        <div className="flex justify-end mt-4">
+        {/* <div className="flex justify-end mt-4">
           <button
             onClick={fazerLogout}
             className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
           >
             Sair
           </button>
-        </div>
+        </div> */}
 
         <div id="Header" className="mt-10">
           <div className="flex gap-4 w-full max-w-xl bg-[#F6F6F6] p-4 rounded-xl">

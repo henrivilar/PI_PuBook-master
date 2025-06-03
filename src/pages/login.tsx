@@ -96,15 +96,14 @@ export default function Login() {
           </Link>
         </p>
 
-        <div className="flex items-center gap-3 mb-5">
+        {/* <div className="flex items-center gap-3 mb-5">
           <div className="h-[1px] w-[137px] bg-[--blue-bg] rounded-full"></div>
           <p>ou entre com</p>
           <div className="h-[1px] w-[137px] bg-[--blue-bg] rounded-full"></div>
         </div>
 
         <div className="flex gap-12">
-          {/* Social login futuro */}
-        </div>
+        </div> */}
       </section>
     </div>
   );
