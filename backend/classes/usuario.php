@@ -16,6 +16,10 @@ class Usuario {
             return ["erro" => "Todos os campos são obrigatórios."];
         }
 
+        if (strlen($senha) < 6) {
+            return ["erro" => "A senha deve ter no mínimo 6 caracteres."];
+        }
+
         // Limpa os dados
         $nome = htmlspecialchars(trim($nome));
         $sobrenome = htmlspecialchars(trim($sobrenome));

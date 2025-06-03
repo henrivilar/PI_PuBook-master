@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -9,22 +9,36 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
 
+  //Redireciona automaticamente se já estiver logado
+  useEffect(() => {
+    const logado = localStorage.getItem("usuarioLogado");
+    if (logado === "true") {
+      router.push("/dashboard");
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErro(""); // limpa erro anterior
 
-    const resposta = await fetch("http://localhost/PI_PUBOOK-MASTER/backend/login.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password: senha }),
-    });
+    try {
+      const resposta = await fetch("http://localhost/PI_PUBOOK-MASTER/backend/login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password: senha }),
+      });
 
-    const dados = await resposta.json();
+      const dados = await resposta.json();
 
-    if (dados.sucesso) {
-      // Redireciona ou salva no localStorage
-      router.push("/dashboard");
-    } else {
-      setErro(dados.erro || "Erro desconhecido");
+      if (dados.sucesso) {
+        // Armazena sessão e redireciona
+        localStorage.setItem("usuarioLogado", "true");
+        router.push("/dashboard");
+      } else {
+        setErro(dados.erro || "Email ou senha incorretos.");
+      }
+    } catch (e) {
+      setErro("Erro ao conectar com o servidor.");
     }
   };
 
@@ -65,21 +79,31 @@ export default function Login() {
             </div>
             <a href="#" className="hover:underline text-blue-500">Esqueci minha senha</a>
           </div>
-          {erro && <p className="text-red-500 text-sm">{erro}</p>}
+
+          {erro && <p className="text-red-500 text-sm text-center">{erro}</p>}
+
           <input
             type="submit"
             value="ENTRAR"
             className="h-[60px] w-[200px] bg-[--blue-bg] mx-auto text-white font-bold text-[24px] rounded-3xl m-5 hover:shadow-xl hover:bg-[#4F5D75] hover:cursor-pointer"
           />
         </form>
-        <p className="m-3">Ainda não possui uma conta? <Link href="/cadastro" className="hover:underline text-blue-500">Cadastre-se</Link></p>
+
+        <p className="m-3">
+          Ainda não possui uma conta?{" "}
+          <Link href="/cadastro" className="hover:underline text-blue-500">
+            Cadastre-se
+          </Link>
+        </p>
+
         <div className="flex items-center gap-3 mb-5">
           <div className="h-[1px] w-[137px] bg-[--blue-bg] rounded-full"></div>
           <p>ou entre com</p>
           <div className="h-[1px] w-[137px] bg-[--blue-bg] rounded-full"></div>
         </div>
+
         <div className="flex gap-12">
-          {/* Social Login (futuro) */}
+          {/* Social login futuro */}
         </div>
       </section>
     </div>
