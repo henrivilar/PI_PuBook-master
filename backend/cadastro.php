@@ -1,5 +1,4 @@
 <?php
-// backend/cadastro.php
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -10,7 +9,6 @@ require_once __DIR__ . '/classes/Usuario.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Verifica se todos os campos foram enviados e não estão vazios
 if (
     empty($data['nome']) ||
     empty($data['sobrenome']) ||
@@ -22,13 +20,11 @@ if (
     exit();
 }
 
-// Verifica se as senhas coincidem
 if ($data['senha'] !== $data['confirmar_senha']) {
     echo json_encode(["erro" => "As senhas não coincidem."]);
     exit();
 }
 
-// Prossegue com o cadastro
 $usuario = new Usuario();
 $resultado = $usuario->cadastrar(
     $data['nome'],

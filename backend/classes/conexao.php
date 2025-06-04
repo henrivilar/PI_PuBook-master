@@ -1,5 +1,4 @@
 <?php
-// backend/classes/Conexao.php
 
 class Conexao {
     private static $host = "localhost";

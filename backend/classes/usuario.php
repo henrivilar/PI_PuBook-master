@@ -1,5 +1,4 @@
 <?php
-// backend/classes/Usuario.php
 
 require_once __DIR__ . '/Conexao.php';
 
@@ -11,7 +10,6 @@ class Usuario {
     }
 
     public function cadastrar($nome, $sobrenome, $email, $senha) {
-        // Validação de campos obrigatórios
         if (empty($nome) || empty($sobrenome) || empty($email) || empty($senha)) {
             return ["erro" => "Todos os campos são obrigatórios."];
         }
@@ -20,20 +18,16 @@ class Usuario {
             return ["erro" => "A senha deve ter no mínimo 6 caracteres."];
         }
 
-        // Limpa os dados
         $nome = htmlspecialchars(trim($nome));
         $sobrenome = htmlspecialchars(trim($sobrenome));
         $email = trim($email);
 
-        // Validação de e-mail
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return ["erro" => "Email inválido."];
         }
 
-        // Hash da senha
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        // Verifica se o e-mail já está cadastrado
         $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->fetchColumn() > 0) {
