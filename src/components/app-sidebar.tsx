@@ -10,6 +10,7 @@ import {
   Map,
   PieChart,
   Clock,
+  UserRoundPen,
   House,
 } from "lucide-react"
 
@@ -54,6 +55,11 @@ const data = {
       title: "Histórico",
       url: "#",
       icon: Clock,
+    },
+    {
+      title: "Perfil",
+      url: "#",
+      icon: UserRoundPen,
     },
   ],
 }

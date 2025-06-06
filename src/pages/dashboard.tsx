@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { AppSidebar } from '@/components/app-sidebar'
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { BookOpen } from 'lucide-react'
 
 interface Livro {
   id: number
@@ -81,20 +82,20 @@ export default function Dashboard() {
         </div> */}
 
         <div id="Header" className="mt-10">
-          <div className="flex gap-4 w-full max-w-xl bg-[#F6F6F6] p-4 rounded-xl">
+          <div className="flex gap-4 w-full max-w-4xl mx-auto bg-[#F6F6F6] p-4 rounded-xl hover:shadow-lg transition">
             <img src="/imgs/Search.svg" alt="Buscar" />
             <input
               type="text"
               name="pesquisa"
               id="pesquisa"
               placeholder="Pesquise por livros, autor, gênero..."
-              className="w-full bg-[#F6F6F6] border-none outline-none"
+              className="w-full bg-[#F6F6F6] border-none outline-none "
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
               onClick={() => buscarLivros(query)}
-              className="text-sm text-white bg-blue-600 px-4 py-2 rounded-lg"
+              className="text-sm text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-800 hover:shadow-md"
             >
               Buscar
             </button>
@@ -109,8 +110,9 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {livros.map((livro) => (
               <div
+                onClick={() => abrirModal(livro)}
                 key={livro.id}
-                className="bg-white border rounded-xl p-4 shadow-md hover:shadow-lg transition"
+                className="bg-white border rounded-xl p-4 shadow-md hover:cursor-pointer hover:-translate-y-1 hover:shadow-lg transition"
               >
                 <img
                   src={getCapaUrl(livro.formats)}
@@ -121,12 +123,6 @@ export default function Dashboard() {
                 <p className="text-sm text-gray-600 mb-2">
                   {livro.authors.map((a) => a.name).join(', ') || 'Autor desconhecido'}
                 </p>
-                <button
-                  onClick={() => abrirModal(livro)}
-                  className="text-blue-600 hover:underline text-sm mb-2"
-                >
-                  Ver Detalhes
-                </button>
               </div>
             ))}
           </div>
@@ -134,39 +130,49 @@ export default function Dashboard() {
 
         {modalAberto && detalhes && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 max-w-lg w-full">
-              <h2 className="text-2xl font-bold mb-2">{detalhes.title}</h2>
-              <p className="mb-2 text-sm text-gray-700">
-                Autor(es): {detalhes.authors.map((a) => a.name).join(', ') || 'Desconhecido'}
-              </p>
-
-              <div className="mb-4">
-                <h3 className="font-semibold mb-2">Leia este livro:</h3>
-                <ul className="space-y-2">
-                  {Object.entries(detalhes.formats)
-                    .filter(([tipo]) => tipo.includes('text/html'))
-                    .map(([tipo, url], index) => (
-                      <li key={index}>
-                        <a
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline"
-                        >
-                          Ler Online
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-
-              <div className="flex justify-end">
-                <button
-                  onClick={() => setModalAberto(false)}
-                  className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg"
-                >
-                  Fechar
-                </button>
+            <div className="flex gap-8 bg-white rounded-lg p-6 max-w-2xl w-full">
+              <img
+                  src={getCapaUrl(detalhes.formats)}
+                  alt={`Capa do livro ${detalhes.title}`}
+                  className="object-cover mb-4 rounded-md"
+              />
+              <div className='flex justify-between flex-col w-full'>
+                <div>
+                  <div className="w-full flex gap-2 justify-between items-start">
+                    <h2 className="text-2xl font-bold mb-2">{detalhes.title}</h2>
+                    <button
+                      onClick={() => setModalAberto(false)}
+                      className="px-4 py-2 bg-red-500 text-white rounded-full font-bold"
+                    >
+                      X
+                    </button>
+                  </div>
+                  <p className="mb-2 text-sm text-gray-700">
+                    Autor(es): {detalhes.authors.map((a) => a.name).join(', ') || 'Desconhecido'}
+                  </p>
+                  <p className="mb-2 text-sm text-gray-700">
+                    Descrição: Não disponível
+                  </p>
+                </div>
+                <div className="mb-3">
+                  <h3 className="font-semibold mb-2">Leia este livro:</h3>
+                  <ul className="flex items-center gap-8">
+                    {Object.entries(detalhes.formats)
+                      .filter(([tipo]) => tipo.includes('text/html'))
+                      .map(([tipo, url], index) => (
+                        <li key={index} className="">
+                          <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-lg bg-[#2D3142] text-[#F6F6F6] px-4 py-1 font-bold rounded-lg hover:bg-[#1A1D2B] transition"
+                          >
+                            <BookOpen /> Ler Online
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
