@@ -37,7 +37,7 @@ const data = {
   navMain: [
     {
       title: "Inicio",
-      url: "#",
+      url: "/dashboard",
       icon: House,
       isActive: true,
     },
@@ -58,7 +58,7 @@ const data = {
     },
     {
       title: "Perfil",
-      url: "#",
+      url: "/perfil",
       icon: UserRoundPen,
     },
   ],

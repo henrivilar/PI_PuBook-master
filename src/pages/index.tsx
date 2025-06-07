@@ -18,7 +18,7 @@ export default function Home() {
             <li className="transition-[.1s] hover:underline hover:scale-[1.05]"><a href="#Duvidas">Duvidas</a></li>
             <li className="transition-[.1s] hover:underline hover:scale-[1.05]"><a href="#Contatos">Contatos</a></li>
           </ul>
-          <button className="text-[--gray-bg] bg-[--blue-text] font-bold w-44 h-12 rounded-full hover:bg-[#4F5D75] hover:shadow-md hover:text-white"><Link href="/login">Começar Leitura</Link></button>
+          <Link href="/login"><button className="text-[--gray-bg] bg-[--blue-text] font-bold w-44 h-12 rounded-full hover:bg-[#4F5D75] hover:shadow-md hover:text-white">Começar Leitura</button></Link>
         </nav>
       </header>
       <main className="flex flex-col items-center justify-center pt-40 leading-none">
@@ -53,7 +53,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">O que é o PuBook ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  O PuBook é uma plataforma web gratuita de biblioteca virtual que disponibiliza um extenso acervo de livros de domínio público. Isso significa que todos os livros oferecidos estão legalmente liberados para acesso livre e gratuito, permitindo que qualquer pessoa leia obras clássicas e importantes da literatura nacional e internacional, de forma prática e acessível.
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -62,7 +62,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">Preciso pagar para usar o PuBook ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  Não. O uso do PuBook é completamente gratuito. Para acessar os livros disponíveis, basta realizar um cadastro simples na plataforma. A partir disso, você poderá explorar e ler quantos livros desejar, sem qualquer custo.
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -71,7 +71,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">Quem pode usar o PuBook ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  O PuBook está disponível para qualquer pessoa interessada em leitura, independentemente de idade, localidade ou nível de conhecimento. A plataforma foi desenvolvida com o objetivo de democratizar o acesso à leitura, tornando obras literárias acessíveis a todos os públicos.
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
@@ -80,7 +80,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">Como faço para começar a usar o PuBook ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  Para começar a utilizar o PuBook, é necessário criar uma conta na plataforma por meio de um rápido processo de cadastro. Após o login, o acesso à biblioteca estará liberado e você poderá começar a explorar nosso acervo imediatamente.
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
@@ -89,7 +89,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">Existe um limite de leitura no PuBook ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  Não. No PuBook, não há qualquer tipo de limite de leitura. Os usuários podem acessar e ler quantos livros desejarem, a qualquer momento. Nossa missão é incentivar o hábito da leitura, e por isso, quanto mais livros você ler, melhor!
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6">
@@ -98,7 +98,7 @@ export default function Home() {
                 <AccordionTrigger className="perguntas-text">Quero ler um livro que não está disponível, o que devo fazer ?</AccordionTrigger>
               </div>
                 <AccordionContent className="text-perguntas">
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  Se você procurou por um livro e ele ainda não está disponível no acervo do PuBook, entre em contato conosco através dos nossos canais de atendimento. Teremos prazer em receber sua sugestão! Nossa equipe avalia constantemente novas obras de domínio público para incluir na plataforma, e o seu feedback é essencial nesse processo.
                 </AccordionContent>
             </AccordionItem>
           </Accordion>
