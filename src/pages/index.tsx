@@ -41,7 +41,17 @@ export default function Home() {
         {/* Tutorial Section */}
         <section id="Tutorial" className="flex flex-col justify-start w-full px-20 py-10 text-left">
           <h2 className="text-[--blue-text] text-3xl font-bold">Veja como é fácil usar o PuBook!</h2>
-          <p className="text-[--blue-text] text-xl">Assista a esse tutorial e aprenda a como começar a ler uma nova história agora mesmo.</p>
+          <p className="text-[--blue-text] text-xl mb-4">Assista a esse tutorial e aprenda a como começar a ler uma nova história agora mesmo.</p>
+          <iframe
+            width="840"
+            height="473"
+            src="https://www.youtube.com/embed/sbkpSEJR1jE?si=9jS1HwUbp3FF6DV0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         </section>
         {/* Perguntas Frequentes Section */}
         <section id="Duvidas" className="bg-[--blue-bg] w-full px-20 py-10">
