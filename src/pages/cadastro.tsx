@@ -39,6 +39,8 @@ export default function Cadastro() {
 
       const result = await response.json();
       if (result.sucesso) {
+        localStorage.setItem('usuarioNome', form.nome);
+        localStorage.setItem('usuarioSobrenome', form.sobrenome);
         alert("Cadastro realizado com sucesso!");
       } else {
         alert("Erro: " + result.erro);
