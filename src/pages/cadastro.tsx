@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import router from "next/router";
 
 export default function Cadastro() {
   const [form, setForm] = useState({
@@ -41,6 +42,7 @@ export default function Cadastro() {
       if (result.sucesso) {
         localStorage.setItem('usuarioNome', form.nome);
         localStorage.setItem('usuarioSobrenome', form.sobrenome);
+        router.push('/login')
         alert("Cadastro realizado com sucesso!");
       } else {
         alert("Erro: " + result.erro);
