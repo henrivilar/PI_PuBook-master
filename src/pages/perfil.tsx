@@ -57,7 +57,7 @@ export default function Perfil() {
               ⚙ Configurações
             </button>
             <button className="bg-red-600 hover:bg-red-500 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2">
-              🚪 Excluir conta
+              🚪 Desativar conta
             </button>
           </div>
         </div>
