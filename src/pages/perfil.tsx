@@ -48,7 +48,12 @@ export default function Perfil() {
 
           <div className="flex flex-col gap-3">
             <button className="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2">
-              ✏ Editar perfil
+             <a
+               href="/EditarPerfil"
+               className="text-blue-600 underline hover:text-blue-800"
+              >
+               Editar Perfil
+              </a> ✏ 
             </button>
             <button className="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded flex items-center justify-center gap-2">
               ⚙ Ajustar preferências
