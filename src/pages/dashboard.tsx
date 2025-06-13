@@ -102,6 +102,7 @@ export default function Dashboard() {
           </div>
         </div>
 
+
         <div id="Descubra" className="mt-10">
           <h2 className="text-xl font-semibold mb-4">Descubra novos livros</h2>
           {carregando && <p>Carregando livros...</p>}

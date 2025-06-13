@@ -64,4 +64,44 @@ class Usuario {
             return ["erro" => "Erro no servidor: " . $e->getMessage()];
         }
     }
+
+public function atualizar($email, $novosDados) {
+    try {
+        $campos = [];
+        $valores = [];
+
+        if (!empty($novosDados['nome'])) {
+            $campos[] = "nome = ?";
+            $valores[] = htmlspecialchars(trim($novosDados['nome']));
+        }
+        if (!empty($novosDados['sobrenome'])) {
+            $campos[] = "sobrenome = ?";
+            $valores[] = htmlspecialchars(trim($novosDados['sobrenome']));
+        }
+        if (!empty($novosDados['senha'])) {
+            if (strlen($novosDados['senha']) < 6) {
+                return ["erro" => "A senha deve ter no mínimo 6 caracteres."];
+            }
+            $campos[] = "senha = ?";
+            $valores[] = password_hash($novosDados['senha'], PASSWORD_DEFAULT);
+        }
+
+        if (empty($campos)) {
+            return ["erro" => "Nenhum dado para atualizar."];
+        }
+
+        $valores[] = $email;
+        $sql = "UPDATE usuarios SET " . implode(", ", $campos) . " WHERE email = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($valores);
+
+        return ["sucesso" => true];
+    } catch (PDOException $e) {
+        return ["erro" => "Erro ao atualizar: " . $e->getMessage()];
+    }
+}
+// ...código existente...
+
+
+// ...código existente...
 }
